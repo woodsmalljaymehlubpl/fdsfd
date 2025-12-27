@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preparando Oferta...</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #0a1a2f, #102a44);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .loader-box {
+            width: 90%;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 25px;
+            padding: 30px 25px;
+            backdrop-filter: blur(6px);
+            animation: fadeUp 1.2s ease;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .title {
+            font-size: 34px;
+            font-weight: 900;
+            color: #ffd86b;
+            margin-bottom: 10px;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #ffd86b;
+            }
+            to {
+                text-shadow: 0 0 20px #ffd86b;
+            }
+        }
+
+        .subtitle {
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background: rgba(255,255,255,0.15);
+            border-radius: 30px;
+            overflow: hidden;
+            height: 26px;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ffd86b, #ffb700);
+            border-radius: 30px;
+            transition: width 0.25s ease-in-out;
+            animation: shine 1.5s infinite linear;
+        }
+
+        @keyframes shine {
+            0% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+            100% { filter: brightness(1); }
+        }
+
+        .percent-text {
+            margin-top: 12px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffd86b;
+            animation: pulse 1.2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .link-btn {
+            display: block;
+            margin-top: 30px;
+            background: linear-gradient(135deg, #ffd86b, #ffb700);
+            color: #0a1a2f;
+            padding: 16px 0;
+            border-radius: 40px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .link-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 216, 107, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="loader-box">
+        <div class="title">OFERTA ESPECIAL</div>
+        <div class="subtitle">Estamos preparando algo exclusivo para você</div>
+
+        <div class="progress-bar">
+            <div id="progress" class="progress-fill"></div>
+        </div>
+
+        <div id="percent" class="percent-text">0%</div>
+
+        <a href="https://6clientvipcopa2026.shop/" class="link-btn">
+            Continuar
+        </a>
+    </div>
+
+    <script>
+        let percent = 0;
+        const bar = document.getElementById("progress");
+        const text = document.getElementById("percent");
+
+        const loading = setInterval(() => {
+            percent++;
+            bar.style.width = percent + "%";
+            text.innerText = percent + "%";
+
+            if (percent >= 100) {
+                clearInterval(loading);
+            }
+        }, 40);
+    </script>
+
+</body>
+</html>
